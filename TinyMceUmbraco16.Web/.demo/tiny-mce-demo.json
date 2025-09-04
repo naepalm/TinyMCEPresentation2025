@@ -1,0 +1,133 @@
+{
+  "$schema": "https://demotime.show/demo-time.schema.json",
+  "title": "Tiny MCE for Umbraco 16 Demo",
+  "description": "Examples of TinyMCE configuration that we need for our Umbraco integration.",
+  "version": 2,
+  "demos": [
+    {
+      "title": "Reset Demo",
+      "description": "Reset the demo and appSettings files.",
+      "steps": [
+        {
+          "action": "open",
+          "path": "appsettings.json"
+        },
+        {
+          "action": "replace",
+          "path": "appsettings.json",
+          "highlightWholeLine": true,
+          "insertTypingMode": "instant",
+          "contentPath": ".demo/files/appsettings-reset.json",
+          "position": "1:500"
+        }
+      ]
+    },
+    {
+      "title": "Show RichTextEditor settings",
+      "description": "Highlight the `RichTextEditor` section in appSettings.",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "appsettings.json",
+          "position": "31:33",
+          "content": ",\n      \"RichTextEditor\": {\n      }",
+          "highlightWholeLine": true,
+          "insertTypingMode": "instant",
+          "zoom": 5
+        }
+      ]
+    },
+    {
+      "title": "Add valid elements",
+      "description": "Add the `ValidElements` to the RichTextEditor section in appSettings",
+      "steps": [
+        {
+          "action": "highlight",
+          "position": "32:32",
+          "highlightWholeLine": true,
+          "path": "appsettings.json",
+          "zoom": 5
+        },
+        {
+          "action": "replace",
+          "path": "appsettings.json",
+          "position": "32:32",
+          "highlightWholeLine": true,
+          "insertTypingMode": "instant",
+          "contentPath": ".demo/files/valid-elements.txt",
+          "zoom": 5
+        }
+      ]
+    },
+    {
+      "title": "Rebuild and run the site",
+      "description": "Rebuild the site to apply the new appSettings",
+      "steps": [
+        {
+          "action": "closeTerminal",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet build",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet run",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "openWebsite",
+          "url": "https://localhost:44352/umbraco/section/content/workspace/document/edit/73b03bcf-3016-4543-8bab-269b78abe844/invariant",
+          "openInVSCode": false
+        }
+      ],
+      "id": "demo-mf5x83ew-25q6"
+    },
+    {
+      "title": "Add details summary and code",
+      "description": "Add the `,details[*],summary[*],code[*]` to the `ValidElements` in appSettings",
+      "steps": [
+        {
+          "action": "write",
+          "path": "appsettings.json",
+          "position": "32,1924",
+          "highlightWholeLine": false,
+          "insertTypingMode": "character-by-character",
+          "content": ",details[*],summary[*],code[*]"
+        },
+        {
+          "action": "highlight",
+          "position": "32,1924:32,1954",
+          "highlightWholeLine": false,
+          "path": "appsettings.json",
+          "zoom": 5
+        }
+      ],
+      "id": "demo-mf5wgtco-y87f"
+    },
+    {
+      "title": "Rebuild the site again",
+      "description": "Rebuild the site to apply the new appSettings",
+      "steps": [
+        {
+          "action": "closeTerminal",
+          "terminalId": "demo-build",
+          "command": "dotnet build"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "terminalId": "demo-build",
+          "command": "dotnet build"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "terminalId": "demo-build",
+          "command": "dotnet run"
+        }
+      ],
+      "id": "demo-mf5xkfvt-zvu2"
+    }
+  ]
+}
