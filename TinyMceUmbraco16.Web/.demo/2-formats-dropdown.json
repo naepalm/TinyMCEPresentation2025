@@ -1,0 +1,104 @@
+{
+  "$schema": "https://demotime.show/demo-time.schema.json",
+  "title": "2. Formats Dropdown",
+  "description": "How to add styles to the Formats Dropdown",
+  "version": 2,
+  "demos": [
+    {
+      "title": "Add TinyMceConfig",
+      "description": "Add the TinyMceConfig settings to AppSettings",
+      "steps": [
+        {
+          "action": "replace",
+          "contentPath": ".demo/formats-dropdown/appSettings-elements.json",
+          "highlightWholeLine": true,
+          "path": "appsettings.json",
+          "insertTypingMode": "instant",
+          "position": "1:5000"
+        },
+        {
+          "action": "insert",
+          "content": "  },\n  \"TinyMceConfig\": {\n   \n  }",
+          "position": "35",
+          "highlightWholeLine": true,
+          "path": "appsettings.json"
+        },
+        {
+          "action": "highlight",
+          "path": "appsettings.json",
+          "position": "36:38",
+          "content": ",\n      \"RichTextEditor\": {\n      }",
+          "highlightWholeLine": true,
+          "insertTypingMode": "instant",
+          "zoom": 5
+        }
+      ]
+    },
+    {
+      "title": "Add custom config",
+      "description": "Add the custom config that needs to wrap around the style formats",
+      "steps": [
+        {
+          "action": "insert",
+          "content": "    \"customConfig\": {\n\n    }",
+          "path": "appsettings.json",
+          "position": "37",
+          "highlightWholeLine": true,
+          "insertTypingMode": "instant",
+          "insertTypingSpeed": 2
+        },
+        {
+          "action": "highlight",
+          "position": "37:39",
+          "highlightWholeLine": true,
+          "path": "appsettings.json",
+          "zoom": 5
+        }
+      ]
+    },
+    {
+      "title": "Add style formats",
+      "description": "Add the `style_formats` to the `customConfig` inside of the new TinyMceConfig settings",
+      "steps": [
+        {
+          "action": "replace",
+          "highlightWholeLine": true,
+          "path": "appsettings.json",
+          "zoom": 5,
+          "contentPath": ".demo/formats-dropdown/style-formats.txt",
+          "position": "38"
+        },
+        {
+          "action": "highlight",
+          "path": "appsettings.json",
+          "position": "38:55",
+          "highlightWholeLine": true,
+          "zoom": 2
+        }
+      ],
+      "id": "demo-mf7ak3rs-52z5"
+    },
+    {
+      "title": "Rebuild the site again",
+      "description": "Rebuild the site to apply the new appSettings",
+      "steps": [
+        {
+          "action": "closeTerminal",
+          "terminalId": "demo-build",
+          "command": "dotnet build"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "terminalId": "demo-build",
+          "command": "dotnet build"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "terminalId": "demo-build",
+          "command": "dotnet run"
+        }
+      ],
+      "id": "demo-mf5xkfvt-zvu2"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+      "style_formats": [
+        {
+          "title": "Headings",
+          "items": [
+            { "title": "Heading 1", "block": "h1" },
+            { "title": "Heading 2", "block": "h2" }
+          ]
+        },
+        {
+          "title": "Colors",
+          "items": [
+            { "title": "Red", "selector": ".red" },
+            { "title": "Pink", "selector": ".pink" },
+            { "title": "Blue", "selector": ".blue" }
+          ]
+        }
+      ]

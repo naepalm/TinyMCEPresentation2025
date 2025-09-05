@@ -1,12 +1,12 @@
 {
   "$schema": "https://demotime.show/demo-time.schema.json",
-  "title": "Tiny MCE for Umbraco 16 Demo",
-  "description": "Examples of TinyMCE configuration that we need for our Umbraco integration.",
+  "title": "1. Allowed Elements",
+  "description": "How to edit the Allowed Elements in Umbraco 16",
   "version": 2,
   "demos": [
     {
-      "title": "Reset Demo",
-      "description": "Reset the demo and appSettings files.",
+      "title": "Show RichTextEditor settings",
+      "description": "Highlight the `RichTextEditor` section in appSettings.",
       "steps": [
         {
           "action": "open",
@@ -17,23 +17,14 @@
           "path": "appsettings.json",
           "highlightWholeLine": true,
           "insertTypingMode": "instant",
-          "contentPath": ".demo/files/appsettings-reset.json",
-          "position": "1:500"
-        }
-      ]
-    },
-    {
-      "title": "Show RichTextEditor settings",
-      "description": "Highlight the `RichTextEditor` section in appSettings.",
-      "steps": [
+          "position": "1:500",
+          "contentPath": ".demo/allowed-elements/appsettings-reset.json"
+        },
         {
           "action": "highlight",
           "path": "appsettings.json",
           "position": "31:33",
-          "content": ",\n      \"RichTextEditor\": {\n      }",
-          "highlightWholeLine": true,
-          "insertTypingMode": "instant",
-          "zoom": 5
+          "highlightWholeLine": true
         }
       ]
     },
@@ -54,7 +45,7 @@
           "position": "32:32",
           "highlightWholeLine": true,
           "insertTypingMode": "instant",
-          "contentPath": ".demo/files/valid-elements.txt",
+          "contentPath": ".demo/allowed-elements/valid-elements.txt",
           "zoom": 5
         }
       ]
@@ -92,14 +83,14 @@
         {
           "action": "write",
           "path": "appsettings.json",
-          "position": "32,1924",
+          "position": "32,1923",
           "highlightWholeLine": false,
           "insertTypingMode": "character-by-character",
           "content": ",details[*],summary[*],code[*]"
         },
         {
           "action": "highlight",
-          "position": "32,1924:32,1954",
+          "position": "32,1923:32,1953",
           "highlightWholeLine": false,
           "path": "appsettings.json",
           "zoom": 5
