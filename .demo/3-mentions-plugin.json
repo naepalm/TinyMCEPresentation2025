@@ -1,0 +1,178 @@
+{
+  "$schema": "https://demotime.show/demo-time.schema.json",
+  "title": "Mentions Plugin",
+  "description": "A demo showing how to create the mentions plugin to extend TinyMCE in the backoffice of Umbraco 16.",
+  "version": 2,
+  "demos": [
+    {
+      "id": "demo-mfehq0qf-o5ls",
+      "title": "Load the Mentions File",
+      "steps": [
+        {
+          "action": "open",
+          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts"
+        },
+        {
+          "action": "replace",
+          "position": "1:5000",
+          "highlightWholeLine": true,
+          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "contentPath": ".demo/mentions-plugin/clean-mentions.ts"
+        },
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "position": "10:12",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ],
+      "description": "Open the mentions file with the structure of our plugin filled in, but not the details"
+    },
+    {
+      "id": "demo-mfei0lsf-yxz5",
+      "title": "Fill in the constructor",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "highlightWholeLine": false,
+          "position": "11",
+          "zoom": 4
+        },
+        {
+          "action": "replace",
+          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "contentPath": ".demo/mentions-plugin/constructor.txt",
+          "position": "11",
+          "highlightWholeLine": true,
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 100
+        },
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "position": "11:24",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ],
+      "description": "Next we fill in the constructor with the editor settings and configuration settings"
+    },
+    {
+      "id": "demo-mfei8z9p-w0ez",
+      "title": "Initialize (Logs)",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "highlightWholeLine": false,
+          "position": "28",
+          "zoom": 4
+        },
+        {
+          "action": "replace",
+          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "contentPath": ".demo/mentions-plugin/initialize.txt",
+          "position": "28",
+          "highlightWholeLine": true,
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 100
+        },
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "position": "28:29",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ],
+      "description": "We add some logs into the initialize function just to see when and where we're calling it"
+    },
+    {
+      "id": "demo-mfeiakcv-ryxn",
+      "title": "Import the mention request factory",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "highlightWholeLine": false,
+          "zoom": 4,
+          "position": "5"
+        },
+        {
+          "action": "replace",
+          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "contentPath": ".demo/mentions-plugin/import-mention-request.txt",
+          "position": "5",
+          "highlightWholeLine": true,
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 100
+        },
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "position": "5",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ],
+      "description": "We do the actual underlying work in the mentions.request-factory.ts file, so we need to call it."
+    },
+    {
+      "id": "demo-mfeidb64-h12c",
+      "title": "Add the override for extendEditorConfig",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "highlightWholeLine": false,
+          "zoom": 4,
+          "position": "27"
+        },
+        {
+          "action": "replace",
+          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "contentPath": ".demo/mentions-plugin/extend-editor-config.txt",
+          "position": "27",
+          "highlightWholeLine": true,
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 100
+        },
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "position": "31"
+        }
+      ],
+      "description": "We need to override extendEditorConfig to add our own configuration in for the mentions"
+    },
+    {
+      "id": "demo-mfeimtfv-3l7k",
+      "title": "Load the mentions request factory",
+      "steps": [
+        {
+          "action": "open",
+          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts"
+        },
+        {
+          "action": "replace",
+          "position": "1:5000",
+          "highlightWholeLine": true,
+          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "contentPath": ".demo/mentions-plugin/clean-request-factory.ts"
+        },
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "position": "3:5",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ],
+      "description": "The actual work is done in our mention request factory, so next we need to go there"
+    }
+  ]
+}

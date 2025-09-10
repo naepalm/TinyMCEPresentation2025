@@ -1,0 +1,2 @@
+		// initialize the plugin
+		console.log("mentions-plugin init");
