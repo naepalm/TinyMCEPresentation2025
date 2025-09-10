@@ -10,11 +10,11 @@
       "steps": [
         {
           "action": "open",
-          "path": "appsettings.json"
+          "path": "TinyMceUmbraco16.Web/appsettings.json"
         },
         {
           "action": "replace",
-          "path": "appsettings.json",
+          "path": "TinyMceUmbraco16.Web/appsettings.json",
           "highlightWholeLine": true,
           "insertTypingMode": "instant",
           "position": "1:500",
@@ -22,7 +22,7 @@
         },
         {
           "action": "highlight",
-          "path": "appsettings.json",
+          "path": "TinyMceUmbraco16.Web/appsettings.json",
           "position": "31:33",
           "highlightWholeLine": true
         }
@@ -36,12 +36,12 @@
           "action": "highlight",
           "position": "32:32",
           "highlightWholeLine": true,
-          "path": "appsettings.json",
+          "path": "TinyMceUmbraco16.Web/appsettings.json",
           "zoom": 5
         },
         {
           "action": "replace",
-          "path": "appsettings.json",
+          "path": "TinyMceUmbraco16.Web/appsettings.json",
           "position": "32:32",
           "highlightWholeLine": true,
           "insertTypingMode": "instant",
@@ -59,6 +59,15 @@
           "terminalId": "demo-build"
         },
         {
+          "action": "waitForTimeout",
+          "timeout": 3
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "cd TinyMceUmbraco16.Web",
+          "terminalId": "demo-build"
+        },
+        {
           "action": "executeTerminalCommand",
           "command": "dotnet build",
           "terminalId": "demo-build"
@@ -67,6 +76,10 @@
           "action": "executeTerminalCommand",
           "command": "dotnet run",
           "terminalId": "demo-build"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 10000
         },
         {
           "action": "openWebsite",
@@ -82,7 +95,7 @@
       "steps": [
         {
           "action": "write",
-          "path": "appsettings.json",
+          "path": "TinyMceUmbraco16.Web/appsettings.json",
           "position": "32,1923",
           "highlightWholeLine": false,
           "insertTypingMode": "character-by-character",
@@ -92,7 +105,7 @@
           "action": "highlight",
           "position": "32,1923:32,1953",
           "highlightWholeLine": false,
-          "path": "appsettings.json",
+          "path": "TinyMceUmbraco16.Web/appsettings.json",
           "zoom": 5
         }
       ],
@@ -106,6 +119,15 @@
           "action": "closeTerminal",
           "terminalId": "demo-build",
           "command": "dotnet build"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 5
+        },
+        {
+          "action": "executeTerminalCommand",
+          "terminalId": "demo-build",
+          "command": "cd TinyMceUmbraco16.Web"
         },
         {
           "action": "executeTerminalCommand",

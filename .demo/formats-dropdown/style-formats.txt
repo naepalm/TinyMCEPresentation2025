@@ -9,9 +9,9 @@
         {
           "title": "Colors",
           "items": [
-            { "title": "Red", "selector": ".red" },
-            { "title": "Pink", "selector": ".pink" },
-            { "title": "Blue", "selector": ".blue" }
+            { "title": "Red", "inline": "span", "classes": "red" },
+            { "title": "Pink", "inline": "span", "classes": "pink" },
+            { "title": "Blue", "inline": "span", "classes": "blue" }
           ]
         }
       ]
