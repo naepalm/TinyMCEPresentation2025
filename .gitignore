@@ -1,1 +1,3 @@
 ﻿.vs
+Plugins/node_modules
+TinyMceUmbraco16.Web/wwwroot/App_Plugins
