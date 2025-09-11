@@ -2,7 +2,8 @@ export async function createMentionsRequest(): Promise<(request: any, respondWit
 
 	return (request: any, respondWith: any) => {
 
-        // Fetch your full user list from the server and cache locally
+        // The initial hardcoded list of users where the user object must contain the properties `id` and `name`
+        // More information can be found at https://www.tiny.cloud/docs/tinymce/6/mentions
         const users = [
             {
                 id: "1",
@@ -19,15 +20,15 @@ export async function createMentionsRequest(): Promise<(request: any, respondWit
 
         ];
 
-        // query.term is the text the user typed after the '@'
+        // request.term is the text the user typed after the '@' - the TinyMCE documentation it's 'query.term'
         var filteredUsers = users.filter(user =>
             user.name.toLowerCase().includes(request.term.toLowerCase())
         );
 
+        // Only get the first ten users
         filteredUsers = filteredUsers.slice(0, 10);
 
-        // Where the user object must contain the properties `id` and `name`
-        // but you could additionally include anything else you deem useful.
+        // Send the users back to the editor
         respondWith(filteredUsers);
 	};
 }

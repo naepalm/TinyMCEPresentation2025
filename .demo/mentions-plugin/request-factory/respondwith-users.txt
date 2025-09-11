@@ -1,0 +1,6 @@
+
+        // Only get the first ten users
+        filteredUsers = filteredUsers.slice(0, 10);
+
+        // Send the users back to the editor
+        respondWith(filteredUsers);

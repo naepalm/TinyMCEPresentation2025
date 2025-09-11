@@ -1,0 +1,1 @@
+import { createMentionsSelect } from './mentions.select-factory';

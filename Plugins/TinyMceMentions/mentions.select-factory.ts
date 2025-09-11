@@ -1,0 +1,27 @@
+
+export async function createMentionsSelect(): Promise<(request: any, respondWith: any) => void> {
+    return async (request: any, respondWith: any) => {
+        try {
+            const response = await fetch(`/umbraco/api/members/getmember/${request.id}`);
+            if (!response.ok) throw new Error("Failed to fetch user details");
+
+            const userDetail = await response.json();
+
+            const div = document.createElement("div");
+            div.innerHTML =
+                `<div style="overflow: hidden; padding: 10px; 20px; background: white; border: solid 1px #777;">
+                    <h1 style="margin: 0; font-size: 1.2em;">${userDetail.name}</h1>
+                    ${userDetail.image
+                        ? `<img src="${userDetail.image}" 
+                               style="width: 50px; height: 50px; float: left; margin-right: 10px;"/>`
+                        : ""}
+                    <p style="margin: 0; font-size: 0.9em; color: #666;">${userDetail.description || ""}</p>
+                </div>`;
+
+            respondWith(div);
+        } catch (err) {
+            console.error("Error loading user detail:", err);
+            respondWith(document.createTextNode("Error loading user details"));
+        }
+    };
+}

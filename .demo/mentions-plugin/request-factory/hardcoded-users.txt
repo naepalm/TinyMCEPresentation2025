@@ -1,0 +1,18 @@
+
+        // The initial hardcoded list of users where the user object must contain the properties `id` and `name`
+        // More information can be found at https://www.tiny.cloud/docs/tinymce/6/mentions
+        const users = [
+            {
+                id: "1",
+                name: 'John Smith'
+            },
+            {
+                id: "2",
+                name: 'Joe Cool'
+            },
+            {
+                id: "3",
+                name: 'Zander Geulph'
+            }
+
+        ];

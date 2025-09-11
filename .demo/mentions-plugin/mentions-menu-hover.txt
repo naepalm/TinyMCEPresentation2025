@@ -1,0 +1,2 @@
+        _config.mentions_menu_hover = await createMentionsSelect();
+		// see the config after the mentions are fetched

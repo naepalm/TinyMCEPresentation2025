@@ -162,7 +162,7 @@
           "position": "1:5000",
           "highlightWholeLine": true,
           "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
-          "contentPath": ".demo/mentions-plugin/clean-request-factory.ts"
+          "contentPath": ".demo/mentions-plugin/request-factory/clean-request-factory.ts"
         },
         {
           "action": "highlight",
@@ -173,6 +173,432 @@
         }
       ],
       "description": "The actual work is done in our mention request factory, so next we need to go there"
+    },
+    {
+      "id": "demo-mffo8jpt-7wqd",
+      "title": "Add hardcoded users",
+      "steps": [
+        {
+          "action": "open",
+          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts"
+        },
+        {
+          "action": "replace",
+          "highlightWholeLine": true,
+          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "contentPath": ".demo/mentions-plugin/request-factory/hardcoded-users.txt",
+          "position": "4",
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 100
+        },
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "position": "5:21",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ],
+      "description": "Add an initial response of hardcoded users for testing"
+    },
+    {
+      "id": "demo-mffoan7o-go3a",
+      "title": "Filter users based on the query",
+      "steps": [
+        {
+          "action": "open",
+          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts"
+        },
+        {
+          "action": "replace",
+          "highlightWholeLine": true,
+          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "contentPath": ".demo/mentions-plugin/request-factory/filter-users.txt",
+          "position": "22",
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 100
+        },
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "position": "23:26"
+        }
+      ],
+      "description": "Filter the users in the list on their name"
+    },
+    {
+      "id": "demo-mffod2qg-t7fa",
+      "title": "Return the first 10 users",
+      "steps": [
+        {
+          "action": "open",
+          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts"
+        },
+        {
+          "action": "replace",
+          "highlightWholeLine": true,
+          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "contentPath": ".demo/mentions-plugin/request-factory/respondwith-users.txt",
+          "position": "27",
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 100
+        },
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "position": "28:32"
+        }
+      ],
+      "description": "Limit the response to the first ten and send it back"
+    },
+    {
+      "id": "demo-mffofbet-p6a8",
+      "title": "Build and run the plugin",
+      "steps": [
+        {
+          "action": "closeTerminal",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 5
+        },
+        {
+          "action": "executeTerminalCommand",
+          "terminalId": "demo-build",
+          "command": "cd Plugins"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "npm run build",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 5000
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "cd ../TinyMceUmbraco16.Web",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet run",
+          "terminalId": "demo-build"
+        }
+      ],
+      "description": "Build the plugin with `npm run build` and run the site again."
+    },
+    {
+      "id": "demo-mffpmk1y-ghqj",
+      "title": "GetMembers API Call",
+      "steps": [
+        {
+          "action": "open",
+          "path": "TinyMceUmbraco16.Web/Controllers/MembersController.cs"
+        },
+        {
+          "action": "highlight",
+          "path": "TinyMceUmbraco16.Web/Controllers/MembersController.cs",
+          "position": "22:36",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ],
+      "description": "Rather than hardcoding we want to get this from members so we'll get a response from the API instead."
+    },
+    {
+      "id": "demo-mffqho0q-d0rc",
+      "title": "Add the try / catch",
+      "steps": [
+        {
+          "action": "open",
+          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts"
+        },
+        {
+          "action": "replace",
+          "position": "4:32",
+          "highlightWholeLine": true,
+          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "contentPath": ".demo/mentions-plugin/request-factory/try-catch.txt"
+        },
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "position": "5:10",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ],
+      "description": "Since we're going to fetch from the API we should put in a try catch"
+    },
+    {
+      "id": "demo-mffr2dga-eht7",
+      "title": "Fetch from the API",
+      "steps": [
+        {
+          "action": "replace",
+          "position": "6",
+          "highlightWholeLine": true,
+          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "contentPath": ".demo/mentions-plugin/request-factory/fetch-members-api.text",
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 100
+        },
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "position": "6:18",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ],
+      "description": "Add the fetch from the API"
+    },
+    {
+      "id": "demo-mffrafat-mgif",
+      "title": "Add async to the return",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "highlightWholeLine": false,
+          "zoom": 4,
+          "position": "3,0"
+        },
+        {
+          "action": "write",
+          "position": "3,7",
+          "highlightWholeLine": true,
+          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "insertTypingMode": "character-by-character",
+          "content": " async",
+          "insertTypingSpeed": 50
+        },
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "highlightWholeLine": false,
+          "zoom": 4,
+          "position": "3,8:3,13"
+        },
+        {
+          "action": "positionCursor",
+          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "position": "3,8",
+          "highlightWholeLine": true
+        }
+      ],
+      "description": "Because we're awaiting, make sure that the return is async"
+    },
+    {
+      "id": "demo-mffrjxta-r3ng",
+      "title": "Build and run the plugin",
+      "steps": [
+        {
+          "action": "closeTerminal",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 5
+        },
+        {
+          "action": "executeTerminalCommand",
+          "terminalId": "demo-build",
+          "command": "cd Plugins"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "npm run build",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 5000
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "cd ../TinyMceUmbraco16.Web",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet run",
+          "terminalId": "demo-build"
+        }
+      ],
+      "description": "Build the plugin with `npm run build` and run the site again."
+    },
+    {
+      "id": "demo-mffv2qao-5km5",
+      "title": "GetMember API Call",
+      "steps": [
+        {
+          "action": "open",
+          "path": "TinyMceUmbraco16.Web/Controllers/MembersController.cs"
+        },
+        {
+          "action": "highlight",
+          "path": "TinyMceUmbraco16.Web/Controllers/MembersController.cs",
+          "position": "39:57",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ],
+      "description": "We also have a method to get a single member from the API - this can be used for the pop-up"
+    },
+    {
+      "id": "demo-mffv4to7-exio",
+      "title": "Load the mentions select factory",
+      "steps": [
+        {
+          "action": "open",
+          "path": "Plugins/TinyMceMentions/mentions.select-factory.ts"
+        },
+        {
+          "action": "replace",
+          "position": "1:5000",
+          "highlightWholeLine": true,
+          "path": "Plugins/TinyMceMentions/mentions.select-factory.ts",
+          "contentPath": ".demo/mentions-plugin/select-factory/clean-select-factory.ts"
+        },
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.select-factory.ts",
+          "position": "4:9",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ],
+      "description": "We create a pop-up in the mentions select factory"
+    },
+    {
+      "id": "demo-mffv8s5q-cnv4",
+      "title": "Fetch a member from the API",
+      "steps": [
+        {
+          "action": "replace",
+          "highlightWholeLine": true,
+          "path": "Plugins/TinyMceMentions/mentions.select-factory.ts",
+          "contentPath": ".demo/mentions-plugin/select-factory/respondwith-div.txt",
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 100,
+          "position": "5"
+        },
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.select-factory.ts",
+          "position": "5:21",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ],
+      "description": "Add the fetch for a single member from the API"
+    },
+    {
+      "id": "demo-mffvdhbv-7ngy",
+      "title": "Import the mention select factory",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "highlightWholeLine": false,
+          "zoom": 4,
+          "position": "6"
+        },
+        {
+          "action": "replace",
+          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "contentPath": ".demo/mentions-plugin/import-mention-select.txt",
+          "position": "6",
+          "highlightWholeLine": true,
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 100
+        },
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "position": "6",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ],
+      "description": "After finishing our work to create the pop-up div, we have to call it"
+    },
+    {
+      "id": "demo-mffvgc41-fnrw",
+      "title": "Add mentions_menu_hover",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "highlightWholeLine": false,
+          "zoom": 4,
+          "position": "33"
+        },
+        {
+          "action": "replace",
+          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "contentPath": ".demo/mentions-plugin/mentions-menu-hover.txt",
+          "position": "33",
+          "highlightWholeLine": true,
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 100
+        },
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "position": "33",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ],
+      "description": "Tell the TinyMCE config to register our promise as the mentions_menu_hover"
+    },
+    {
+      "id": "demo-mffvcjeg-wczn",
+      "title": "Build and run the plugin",
+      "steps": [
+        {
+          "action": "closeTerminal",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 5
+        },
+        {
+          "action": "executeTerminalCommand",
+          "terminalId": "demo-build",
+          "command": "cd Plugins"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "npm run build",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 5000
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "cd ../TinyMceUmbraco16.Web",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet run",
+          "terminalId": "demo-build"
+        }
+      ],
+      "description": "Build the plugin with `npm run build` and run the site again."
     }
   ]
 }

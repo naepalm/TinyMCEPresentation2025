@@ -1,0 +1,5 @@
+
+        // request.term is the text the user typed after the '@' - the TinyMCE documentation it's 'query.term'
+        var filteredUsers = users.filter(user =>
+            user.name.toLowerCase().includes(request.term.toLowerCase())
+        );
