@@ -10,14 +10,14 @@ const __dirname = path.dirname(__filename);
 export default defineConfig({
   build: {
     lib: {
-      entry: path.resolve(__dirname, "TinyMceMentions/mentions.tinymce-api.ts"),
-      name: "TinyMceMentionsPlugin",
-      fileName: "tinymce-mentions-plugin",
+      entry: path.resolve(__dirname, "TinyMceExtensions/extensions.tinymce-api.ts"),
+      name: "TinyMceExtensionsPlugin",
+      fileName: "tinymce-extensions-plugin",
       formats: ["es"],
     },
     outDir: path.resolve(
       __dirname,
-      "../TinyMceUmbraco16.Web/wwwroot/App_Plugins/tinymce-mentions-plugin"
+      "../TinyMceUmbraco16.Web/wwwroot/App_Plugins/tinymce-extensions-plugin"
     ),
     emptyOutDir: false,
     sourcemap: true,
@@ -30,7 +30,7 @@ export default defineConfig({
       targets: [
         {
           // Copy all JSON, CSS, HTML, SVG, etc. files but ignore .ts
-          src: "TinyMceMentions/*.{json,css,html,svg,png,jpg}",
+          src: "TinyMceExtensions/*.{json,css,html,svg,png,jpg}",
           dest: ".",
         },
       ],

@@ -39,13 +39,20 @@
       "description": "Add the custom config that needs to wrap around the style formats",
       "steps": [
         {
+          "action": "highlight",
+          "position": "37",
+          "highlightWholeLine": false,
+          "path": "TinyMceUmbraco16.Web/appsettings.json",
+          "zoom": 5
+        },
+        {
           "action": "insert",
           "content": "    \"customConfig\": {\n\n    }",
           "path": "TinyMceUmbraco16.Web/appsettings.json",
           "position": "37",
           "highlightWholeLine": true,
-          "insertTypingMode": "instant",
-          "insertTypingSpeed": 2
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 100
         },
         {
           "action": "highlight",
@@ -61,12 +68,21 @@
       "description": "Add the `style_formats` to the `customConfig` inside of the new TinyMceConfig settings",
       "steps": [
         {
+          "action": "highlight",
+          "path": "TinyMceUmbraco16.Web/appsettings.json",
+          "position": "38",
+          "highlightWholeLine": false,
+          "zoom": 2
+        },
+        {
           "action": "replace",
           "highlightWholeLine": true,
           "path": "TinyMceUmbraco16.Web/appsettings.json",
           "zoom": 5,
           "contentPath": ".demo/formats-dropdown/style-formats.txt",
-          "position": "38"
+          "position": "38",
+          "insertTypingSpeed": 100,
+          "insertTypingMode": "line-by-line"
         },
         {
           "action": "highlight",

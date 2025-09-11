@@ -1,4 +1,4 @@
-            const response = await fetch(`/umbraco/api/members/getbyid/${request.id}`);
+            const response = await fetch(`/umbraco/api/members/getmember/${request.id}`);
             if (!response.ok) throw new Error("Failed to fetch user details");
 
             const userDetail = await response.json();

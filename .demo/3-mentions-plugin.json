@@ -10,18 +10,18 @@
       "steps": [
         {
           "action": "open",
-          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts"
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts"
         },
         {
           "action": "replace",
           "position": "1:5000",
           "highlightWholeLine": true,
-          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
-          "contentPath": ".demo/mentions-plugin/clean-mentions.ts"
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
+          "contentPath": ".demo/mentions-plugin/clean-extensions.ts"
         },
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
           "position": "10:12",
           "highlightWholeLine": true,
           "zoom": 4
@@ -35,14 +35,14 @@
       "steps": [
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
           "highlightWholeLine": false,
           "position": "11",
           "zoom": 4
         },
         {
           "action": "replace",
-          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
           "contentPath": ".demo/mentions-plugin/constructor.txt",
           "position": "11",
           "highlightWholeLine": true,
@@ -51,7 +51,7 @@
         },
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
           "position": "11:24",
           "highlightWholeLine": true,
           "zoom": 4
@@ -65,14 +65,14 @@
       "steps": [
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
           "highlightWholeLine": false,
           "position": "28",
           "zoom": 4
         },
         {
           "action": "replace",
-          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
           "contentPath": ".demo/mentions-plugin/initialize.txt",
           "position": "28",
           "highlightWholeLine": true,
@@ -81,7 +81,7 @@
         },
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
           "position": "28:29",
           "highlightWholeLine": true,
           "zoom": 4
@@ -95,14 +95,14 @@
       "steps": [
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
           "highlightWholeLine": false,
           "zoom": 4,
           "position": "5"
         },
         {
           "action": "replace",
-          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
           "contentPath": ".demo/mentions-plugin/import-mention-request.txt",
           "position": "5",
           "highlightWholeLine": true,
@@ -111,7 +111,7 @@
         },
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
           "position": "5",
           "highlightWholeLine": true,
           "zoom": 4
@@ -125,14 +125,14 @@
       "steps": [
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
           "highlightWholeLine": false,
           "zoom": 4,
           "position": "27"
         },
         {
           "action": "replace",
-          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
           "contentPath": ".demo/mentions-plugin/extend-editor-config.txt",
           "position": "27",
           "highlightWholeLine": true,
@@ -141,7 +141,7 @@
         },
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
           "highlightWholeLine": true,
           "zoom": 4,
           "position": "31"
@@ -155,18 +155,18 @@
       "steps": [
         {
           "action": "open",
-          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts"
+          "path": "Plugins/TinyMceExtensions/mentions.request-factory.ts"
         },
         {
           "action": "replace",
           "position": "1:5000",
           "highlightWholeLine": true,
-          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "path": "Plugins/TinyMceExtensions/mentions.request-factory.ts",
           "contentPath": ".demo/mentions-plugin/request-factory/clean-request-factory.ts"
         },
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "path": "Plugins/TinyMceExtensions/mentions.request-factory.ts",
           "position": "3:5",
           "highlightWholeLine": true,
           "zoom": 4
@@ -180,12 +180,12 @@
       "steps": [
         {
           "action": "open",
-          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts"
+          "path": "Plugins/TinyMceExtensions/mentions.request-factory.ts"
         },
         {
           "action": "replace",
           "highlightWholeLine": true,
-          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "path": "Plugins/TinyMceExtensions/mentions.request-factory.ts",
           "contentPath": ".demo/mentions-plugin/request-factory/hardcoded-users.txt",
           "position": "4",
           "insertTypingMode": "line-by-line",
@@ -193,7 +193,7 @@
         },
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "path": "Plugins/TinyMceExtensions/mentions.request-factory.ts",
           "position": "5:21",
           "highlightWholeLine": true,
           "zoom": 4
@@ -207,12 +207,12 @@
       "steps": [
         {
           "action": "open",
-          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts"
+          "path": "Plugins/TinyMceExtensions/mentions.request-factory.ts"
         },
         {
           "action": "replace",
           "highlightWholeLine": true,
-          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "path": "Plugins/TinyMceExtensions/mentions.request-factory.ts",
           "contentPath": ".demo/mentions-plugin/request-factory/filter-users.txt",
           "position": "22",
           "insertTypingMode": "line-by-line",
@@ -220,7 +220,7 @@
         },
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "path": "Plugins/TinyMceExtensions/mentions.request-factory.ts",
           "highlightWholeLine": true,
           "zoom": 4,
           "position": "23:26"
@@ -234,12 +234,12 @@
       "steps": [
         {
           "action": "open",
-          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts"
+          "path": "Plugins/TinyMceExtensions/mentions.request-factory.ts"
         },
         {
           "action": "replace",
           "highlightWholeLine": true,
-          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "path": "Plugins/TinyMceExtensions/mentions.request-factory.ts",
           "contentPath": ".demo/mentions-plugin/request-factory/respondwith-users.txt",
           "position": "27",
           "insertTypingMode": "line-by-line",
@@ -247,7 +247,7 @@
         },
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "path": "Plugins/TinyMceExtensions/mentions.request-factory.ts",
           "highlightWholeLine": true,
           "zoom": 4,
           "position": "28:32"
@@ -318,18 +318,18 @@
       "steps": [
         {
           "action": "open",
-          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts"
+          "path": "Plugins/TinyMceExtensions/mentions.request-factory.ts"
         },
         {
           "action": "replace",
           "position": "4:32",
           "highlightWholeLine": true,
-          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "path": "Plugins/TinyMceExtensions/mentions.request-factory.ts",
           "contentPath": ".demo/mentions-plugin/request-factory/try-catch.txt"
         },
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "path": "Plugins/TinyMceExtensions/mentions.request-factory.ts",
           "position": "5:10",
           "highlightWholeLine": true,
           "zoom": 4
@@ -345,14 +345,14 @@
           "action": "replace",
           "position": "6",
           "highlightWholeLine": true,
-          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "path": "Plugins/TinyMceExtensions/mentions.request-factory.ts",
           "contentPath": ".demo/mentions-plugin/request-factory/fetch-members-api.text",
           "insertTypingMode": "line-by-line",
           "insertTypingSpeed": 100
         },
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "path": "Plugins/TinyMceExtensions/mentions.request-factory.ts",
           "position": "6:18",
           "highlightWholeLine": true,
           "zoom": 4
@@ -366,7 +366,7 @@
       "steps": [
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "path": "Plugins/TinyMceExtensions/mentions.request-factory.ts",
           "highlightWholeLine": false,
           "zoom": 4,
           "position": "3,0"
@@ -375,21 +375,21 @@
           "action": "write",
           "position": "3,7",
           "highlightWholeLine": true,
-          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "path": "Plugins/TinyMceExtensions/mentions.request-factory.ts",
           "insertTypingMode": "character-by-character",
           "content": " async",
           "insertTypingSpeed": 50
         },
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "path": "Plugins/TinyMceExtensions/mentions.request-factory.ts",
           "highlightWholeLine": false,
           "zoom": 4,
           "position": "3,8:3,13"
         },
         {
           "action": "positionCursor",
-          "path": "Plugins/TinyMceMentions/mentions.request-factory.ts",
+          "path": "Plugins/TinyMceExtensions/mentions.request-factory.ts",
           "position": "3,8",
           "highlightWholeLine": true
         }
@@ -459,18 +459,18 @@
       "steps": [
         {
           "action": "open",
-          "path": "Plugins/TinyMceMentions/mentions.select-factory.ts"
+          "path": "Plugins/TinyMceExtensions/mentions.select-factory.ts"
         },
         {
           "action": "replace",
           "position": "1:5000",
           "highlightWholeLine": true,
-          "path": "Plugins/TinyMceMentions/mentions.select-factory.ts",
+          "path": "Plugins/TinyMceExtensions/mentions.select-factory.ts",
           "contentPath": ".demo/mentions-plugin/select-factory/clean-select-factory.ts"
         },
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.select-factory.ts",
+          "path": "Plugins/TinyMceExtensions/mentions.select-factory.ts",
           "position": "4:9",
           "highlightWholeLine": true,
           "zoom": 4
@@ -485,7 +485,7 @@
         {
           "action": "replace",
           "highlightWholeLine": true,
-          "path": "Plugins/TinyMceMentions/mentions.select-factory.ts",
+          "path": "Plugins/TinyMceExtensions/mentions.select-factory.ts",
           "contentPath": ".demo/mentions-plugin/select-factory/respondwith-div.txt",
           "insertTypingMode": "line-by-line",
           "insertTypingSpeed": 100,
@@ -493,7 +493,7 @@
         },
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.select-factory.ts",
+          "path": "Plugins/TinyMceExtensions/mentions.select-factory.ts",
           "position": "5:21",
           "highlightWholeLine": true,
           "zoom": 4
@@ -507,14 +507,14 @@
       "steps": [
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
           "highlightWholeLine": false,
           "zoom": 4,
           "position": "6"
         },
         {
           "action": "replace",
-          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
           "contentPath": ".demo/mentions-plugin/import-mention-select.txt",
           "position": "6",
           "highlightWholeLine": true,
@@ -523,7 +523,7 @@
         },
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
           "position": "6",
           "highlightWholeLine": true,
           "zoom": 4
@@ -537,14 +537,14 @@
       "steps": [
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
           "highlightWholeLine": false,
           "zoom": 4,
           "position": "33"
         },
         {
           "action": "replace",
-          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
           "contentPath": ".demo/mentions-plugin/mentions-menu-hover.txt",
           "position": "33",
           "highlightWholeLine": true,
@@ -553,7 +553,7 @@
         },
         {
           "action": "highlight",
-          "path": "Plugins/TinyMceMentions/mentions.tinymce-api.ts",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
           "position": "33",
           "highlightWholeLine": true,
           "zoom": 4

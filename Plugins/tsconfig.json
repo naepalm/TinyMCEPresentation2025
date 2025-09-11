@@ -30,5 +30,5 @@
       "@umbraco-cms/backoffice/extension-types"
     ]
   },
-  "include": [ "TinyMceMentions/**/*.ts" ]
+  "include": [ "TinyMceExtensions/**/*.ts" ]
 }
