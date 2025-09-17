@@ -5,7 +5,6 @@ import type { UmbPropertyEditorConfigCollection } from '@umbraco-cms/backoffice/
 import { createMentionsRequest } from './mentions.request-factory';
 import { createMentionsSelect } from './mentions.select-factory';
 
-
 export default class TinyMceMentionsExtensionApi extends UmbTinyMcePluginBase {
 	readonly #editor: Editor;
 	readonly #configuration: UmbPropertyEditorConfigCollection | undefined;

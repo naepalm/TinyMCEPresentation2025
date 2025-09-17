@@ -1,6 +1,6 @@
 {
   "$schema": "https://demotime.show/demo-time.schema.json",
-  "title": "Mentions Plugin",
+  "title": "3. Mentions Plugin",
   "description": "A demo showing how to create the mentions plugin to extend TinyMCE in the backoffice of Umbraco 16.",
   "version": 2,
   "demos": [
