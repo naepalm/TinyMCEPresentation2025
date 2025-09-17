@@ -4,6 +4,7 @@ import type { Editor } from '@tiny-mce-umbraco/backoffice/external/tinymce';
 import type { UmbPropertyEditorConfigCollection } from '@umbraco-cms/backoffice/property-editor';
 import { createMentionsRequest } from './mentions.request-factory';
 import { createMentionsSelect } from './mentions.select-factory';
+import { createAdvTemplatesRequest } from './advtemplates.request-factory';
 
 export default class TinyMceMentionsExtensionApi extends UmbTinyMcePluginBase {
 	readonly #editor: Editor;
@@ -31,6 +32,7 @@ export default class TinyMceMentionsExtensionApi extends UmbTinyMcePluginBase {
 		console.log("mentions-plugin initial config", [_config]);
 		_config.mentions_fetch = await createMentionsRequest(); // or a function that returns the request handler
         _config.mentions_menu_hover = await createMentionsSelect();
+		_config.advtemplate_list = await createAdvTemplatesRequest();
 		// see the config after the mentions are fetched
 		console.log("mentions-plugin config with mentions", [_config]);
 	}
