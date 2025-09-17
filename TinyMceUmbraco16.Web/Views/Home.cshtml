@@ -1,5 +1,29 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
-	Layout = null;
+    Layout = "_Layout.cshtml";
+}
+
+<h1>@Model.Name</h1>
+@if (Model.Children().Any())
+{
+    <ul>
+        @foreach (var categoryFolder in Model.Children())
+        {
+            <li>
+                <h2>@categoryFolder.Name</h2>
+                @if (categoryFolder.Children().Any())
+                {
+                    <ul>
+                        @foreach (var rteItem in categoryFolder.Children())
+                        {
+                            <li>
+                                <a href="@rteItem.Url()">@rteItem.Name</a>
+                            </li>
+                        }
+                    </ul>
+                }
+            </li>
+        }
+    </ul>
 }

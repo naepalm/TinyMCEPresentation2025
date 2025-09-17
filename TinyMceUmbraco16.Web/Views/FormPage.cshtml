@@ -1,0 +1,40 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Forms.Web
+@using Umbraco.Forms.Web.Extensions;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+    Layout = "_Layout.cshtml";
+}
+
+@section Header {
+    <style>
+        .umbraco-forms-hidden {
+            display: none;
+            visibility: hidden;
+        }
+    </style>
+}
+
+<h1>@Model.Name</h1>
+
+@await Component.InvokeAsync("RenderForm", new { formId = @Model.Value<Guid>("form"), theme = "default", includeScripts = false })
+
+@section FooterScripts {
+    
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
+
+    @if (TempData.Get<Guid[]>("UmbracoForms") is Guid[] formIds)
+    {
+        foreach (var formId in formIds)
+        {
+            @await Component.InvokeAsync("RenderFormScripts", new { formId, theme = "default" })
+        }
+
+        TempData.Remove("UmbracoForms");
+    }
+
+    @Html.RenderUmbracoFormDependencies(Url)
+}

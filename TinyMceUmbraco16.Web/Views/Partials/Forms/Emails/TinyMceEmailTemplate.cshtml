@@ -1,0 +1,29 @@
+﻿@using TinyMceUmbraco16.Web.Forms.Models
+@model TinyMceEmailModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Email</title>
+</head>
+<body>
+    <h2>Form: @Model.FormName</h2>
+    <p>Submitted: @Model.Record.Created</p>
+
+    <h3>Fields</h3>
+    <ul>
+        @foreach (var field in Model.Record.RecordFields.Values)
+        {
+            <li><strong>@field.Field.Caption</strong>: @string.Join(", ", field.Values ?? new List<object>())</li>
+        }
+    </ul>
+
+
+    @if (Model.ContentNode != null)
+    {
+        <h3>Extra Content</h3>
+        @Html.Raw(Model.ContentNode.Value("template"))
+    }
+</body>
+</html>
