@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using System.Web;
 using TinyMceUmbraco16.Web.Forms.Models;
 using Umbraco.Cms.Core;
 using Umbraco.Cms.Core.Mail;
@@ -97,8 +98,17 @@ namespace TinyMceUmbraco16.Forms.Workflows
         {
             try
             {
+                // Try to resolve ContentNode if one was picked
+                using var scope = _serviceProvider.CreateScope();
+                Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent? contentNode = null;
+                if (!string.IsNullOrWhiteSpace(ContentNode) && Guid.TryParse(ContentNode, out var guid))
+                {
+                    var pcq = scope.ServiceProvider.GetRequiredService<IPublishedContentQuery>();
+                    contentNode = pcq.Content(guid);
+                }
+
                 // 1. Render Razor template
-                var emailBody = await RenderRazorViewToStringAsync(EmailTemplate!, context);
+                var emailBody = await RenderRazorViewToStringAsync(EmailTemplate!, context, contentNode?.Value<IHtmlString>("template"));
 
                 // 2. Create EmailMessage
                 var email = new EmailMessage(
@@ -107,25 +117,11 @@ namespace TinyMceUmbraco16.Forms.Workflows
                     cc: CCEmail?.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries) ?? Array.Empty<string>(),
                     bcc: BCCEmail?.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries) ?? Array.Empty<string>(),
                     replyTo: ReplyToEmail?.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries) ?? Array.Empty<string>(),
-                    subject: $"Form submission: {context.Form.Name}",
+                    subject: contentNode?.Value<string>("subject") ?? $"Form submission: {context.Form.Name}",
                     body: emailBody,
                     attachments: null,
                     isBodyHtml: true
                 );
-
-                if (!string.IsNullOrWhiteSpace(ContentNode))
-                {
-                    using (var scope = _serviceProvider.CreateScope())
-                    {
-                        var pcq = scope.ServiceProvider.GetRequiredService<IPublishedContentQuery>();
-
-                        if (UdiParser.TryParse(ContentNode, out var udi))
-                        {
-                            var content = pcq.Content(udi);
-                            // Use cached published content
-                        }
-                    }
-                }
 
 
                 // 3. Send email (SMTP from appsettings.json)
@@ -141,7 +137,7 @@ namespace TinyMceUmbraco16.Forms.Workflows
         }
 
         // Utility: render Razor view into a string
-        private async Task<string> RenderRazorViewToStringAsync(string viewPath, WorkflowExecutionContext context)
+        private async Task<string> RenderRazorViewToStringAsync(string viewPath, WorkflowExecutionContext context, IHtmlString? templateContent)
         {
             using var scope = _serviceProvider.CreateScope();
             var scopedProvider = scope.ServiceProvider;
@@ -167,21 +163,13 @@ namespace TinyMceUmbraco16.Forms.Workflows
                         $"View not found. Tried '{viewPath}' and '{fallbackPath}'.");
             }
 
-            // Try to resolve ContentNode if one was picked
-            Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent? contentNode = null;
-            if (!string.IsNullOrWhiteSpace(ContentNode) && Guid.TryParse(ContentNode, out var guid))
-            {
-                var pcq = scope.ServiceProvider.GetRequiredService<IPublishedContentQuery>();
-                contentNode = pcq.Content(guid);
-            }
-
             // Build the model
             var model = new TinyMceEmailModel
             {
                 FormName = context.Form.Name,
                 Record = context.Record,
                 Form = context.Form,
-                ContentNode = contentNode
+                TemplateContent = templateContent
             };
 
             var viewDictionary = new ViewDataDictionary(

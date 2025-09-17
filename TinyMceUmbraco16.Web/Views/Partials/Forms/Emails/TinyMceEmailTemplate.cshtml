@@ -20,10 +20,10 @@
     </ul>
 
 
-    @if (Model.ContentNode != null)
+    @if (Model.TemplateContent != null)
     {
         <h3>Extra Content</h3>
-        @Html.Raw(Model.ContentNode.Value("template"))
+        @Html.Raw(Model.TemplateContent)
     }
 </body>
 </html>
