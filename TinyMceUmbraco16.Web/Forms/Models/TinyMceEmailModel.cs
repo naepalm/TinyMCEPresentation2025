@@ -10,7 +10,7 @@ namespace TinyMceUmbraco16.Web.Forms.Models
         public string FormName { get; set; } = string.Empty;
         public Record Record { get; set; } = default!;
         public Form Form { get; set; } = default!;
-        public IHtmlString? TemplateContent { get; set; }
+        public string? TemplateContent { get; set; }
     }
 
 }

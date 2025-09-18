@@ -1,14 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Abstractions;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Razor;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System.Web;
-using TinyMceUmbraco16.Web.Forms.Models;
+using TinyMceUmbraco16.Web.Services;
 using Umbraco.Cms.Core;
 using Umbraco.Cms.Core.Mail;
-using Umbraco.Cms.Core.Models.Email;
+using Umbraco.Cms.Core.Models.PublishedContent;
+using Umbraco.Cms.Core.Web;
 using Umbraco.Forms.Core;
 using Umbraco.Forms.Core.Enums;
 
@@ -16,24 +14,21 @@ namespace TinyMceUmbraco16.Forms.Workflows
 {
     public class SendEmailWithPickedTemplate : WorkflowType
     {
-        private readonly IEmailSender _emailSender;
-        private readonly IRazorViewEngine _razorViewEngine;
-        private readonly ITempDataProvider _tempDataProvider;
         private readonly IServiceProvider _serviceProvider;
+        private readonly IUmbracoContextAccessor _umbracoContextAccessor;
         private readonly ILogger<SendEmailWithPickedTemplate> _logger;
+        private readonly IFormsService _formsService;
 
         public SendEmailWithPickedTemplate(
-            IEmailSender emailSender,
-            IRazorViewEngine razorViewEngine,
-            ITempDataProvider tempDataProvider,
             IServiceProvider serviceProvider,
-            ILogger<SendEmailWithPickedTemplate> logger)
+            IUmbracoContextAccessor umbracoContextAccessor,
+            ILogger<SendEmailWithPickedTemplate> logger,
+            IFormsService formsService)
         {
-            _emailSender = emailSender;
-            _razorViewEngine = razorViewEngine;
-            _tempDataProvider = tempDataProvider;
             _serviceProvider = serviceProvider;
+            _umbracoContextAccessor = umbracoContextAccessor;
             _logger = logger;
+            _formsService = formsService;
 
             Id = new Guid("f3b5e59a-1c21-4f2e-9f93-111111111111");
             Name = "Send Email With Picked Template";
@@ -98,35 +93,43 @@ namespace TinyMceUmbraco16.Forms.Workflows
         {
             try
             {
-                // Try to resolve ContentNode if one was picked
-                using var scope = _serviceProvider.CreateScope();
-                Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent? contentNode = null;
+                IPublishedContent? contentNode = null;
+                IPublishedContent? pageNode = null;
+
                 if (!string.IsNullOrWhiteSpace(ContentNode) && Guid.TryParse(ContentNode, out var guid))
                 {
+                    using var scope = _serviceProvider.CreateScope();
                     var pcq = scope.ServiceProvider.GetRequiredService<IPublishedContentQuery>();
                     contentNode = pcq.Content(guid);
                 }
 
-                // 1. Render Razor template
-                var emailBody = await RenderRazorViewToStringAsync(EmailTemplate!, context, contentNode?.Value<IHtmlString>("template"));
+                if (_umbracoContextAccessor.TryGetUmbracoContext(out var umbracoContext))
+                {
+                    pageNode = umbracoContext.PublishedRequest?.PublishedContent;
+                }
 
-                // 2. Create EmailMessage
-                var email = new EmailMessage(
-                    from: !string.IsNullOrWhiteSpace(SenderEmail) ? SenderEmail : "no-reply@yourdomain.com",
-                    to: RecipientEmail?.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries) ?? Array.Empty<string>(),
-                    cc: CCEmail?.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries) ?? Array.Empty<string>(),
-                    bcc: BCCEmail?.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries) ?? Array.Empty<string>(),
-                    replyTo: ReplyToEmail?.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries) ?? Array.Empty<string>(),
-                    subject: contentNode?.Value<string>("subject") ?? $"Form submission: {context.Form.Name}",
-                    body: emailBody,
-                    attachments: null,
-                    isBodyHtml: true
-                );
+                // 1. Page specific overrides (if any) or fallbacks to the template node
+                var fallbackSubject = contentNode?.Value<string>("subject") ?? $"Form submission: {context.Form.Name}";
+                var fallbackTemplate = contentNode?.Value<string>("template") ?? string.Empty;
 
+                var overrideSubject = pageNode?.Value<string>("subjectOverride");
+                var overrideTemplate = pageNode?.Value<string>("templateOverride");
 
-                // 3. Send email (SMTP from appsettings.json)
-                await _emailSender.SendAsync(email, "umbracoForm");
-                _logger.LogInformation("Workflow '{Workflow}' sent email to {Recipients}", Name, string.Join(", ", email.To));
+                var finalSubject = !string.IsNullOrWhiteSpace(overrideSubject) ? overrideSubject : fallbackSubject;
+                var rawTemplate = !string.IsNullOrWhiteSpace(overrideTemplate) ? overrideTemplate : fallbackTemplate;
+
+                // 2. Expand [Customer.*] and dictionary tokens
+                var processedTemplate = await _formsService.ReplaceTemplateTokensAsync(rawTemplate, context);
+
+                // 3. Render body
+                var emailBody = await _formsService.RenderRazorViewToStringAsync(EmailTemplate!, context, processedTemplate);
+
+                // 4. Build message
+                var email = await _formsService.BuildEmailMessageAsync(context, finalSubject, SenderEmail, RecipientEmail, CCEmail, BCCEmail, ReplyToEmail, emailBody);
+
+                // 5. Send
+                await _formsService.SendEmailAsync(email, Name);
+
                 return WorkflowExecutionStatus.Completed;
             }
             catch (Exception ex)
@@ -136,60 +139,5 @@ namespace TinyMceUmbraco16.Forms.Workflows
             }
         }
 
-        // Utility: render Razor view into a string
-        private async Task<string> RenderRazorViewToStringAsync(string viewPath, WorkflowExecutionContext context, IHtmlString? templateContent)
-        {
-            using var scope = _serviceProvider.CreateScope();
-            var scopedProvider = scope.ServiceProvider;
-
-            var actionContext = new ActionContext(
-                new DefaultHttpContext { RequestServices = scopedProvider },
-                new RouteData(),
-                new ActionDescriptor());
-
-            await using var sw = new StringWriter();
-
-            // Try original path
-            var viewResult = _razorViewEngine.GetView(null, viewPath, true);
-
-            // Fallback to ~/Views/Partials if needed
-            if (!viewResult.Success)
-            {
-                var fallbackPath = $"~/Views/Partials/{viewPath.TrimStart('~', '/')}";
-                viewResult = _razorViewEngine.GetView(null, fallbackPath, true);
-
-                if (!viewResult.Success)
-                    throw new InvalidOperationException(
-                        $"View not found. Tried '{viewPath}' and '{fallbackPath}'.");
-            }
-
-            // Build the model
-            var model = new TinyMceEmailModel
-            {
-                FormName = context.Form.Name,
-                Record = context.Record,
-                Form = context.Form,
-                TemplateContent = templateContent
-            };
-
-            var viewDictionary = new ViewDataDictionary(
-                new EmptyModelMetadataProvider(),
-                new ModelStateDictionary())
-            {
-                Model = model
-            };
-
-            var viewContext = new ViewContext(
-                actionContext,
-                viewResult.View,
-                viewDictionary,
-                new TempDataDictionary(actionContext.HttpContext, scopedProvider.GetRequiredService<ITempDataProvider>()),
-                sw,
-                new HtmlHelperOptions()
-            );
-
-            await viewResult.View.RenderAsync(viewContext);
-            return sw.ToString();
-        }
     }
 }
