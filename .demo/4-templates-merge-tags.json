@@ -1,0 +1,139 @@
+{
+  "$schema": "https://demotime.show/demo-time.schema.json",
+  "title": "4. Templates & Merge Tags",
+  "description": "How to use templates and merge tags in Umbraco 16.",
+  "version": 2,
+  "demos": [
+    {
+      "title": "Add templates & merge tags",
+      "description": "Add the templates and the merge tags to the data type and then view the template and the form pages. Explain the merge tag dropdown and how it will match the forms and the dictionary items.",
+      "steps": [
+        {
+          "action": "closeTerminal",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 5
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "cd TinyMceUmbraco16.Web",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet build",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet run",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 10000
+        },
+        {
+          "action": "openWebsite",
+          "url": "http://localhost:11070/umbraco/section/settings/workspace/data-type/edit/880777f5-6878-4c3f-b77a-4e2c0e6906ab",
+          "openInVSCode": false
+        }
+      ],
+      "id": "demo-mf5x83ew-25q6"
+    },
+    {
+      "id": "demo-mfpxkzyq-xujk",
+      "title": "GetTemplates API Call",
+      "steps": [
+        {
+          "action": "highlight",
+          "position": "46:82",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "path": "TinyMceUmbraco16.Web/Controllers/AdvancedTemplatesController.cs"
+        }
+      ],
+      "description": "Rather than hardcoding we want to get this from the data folder and the content."
+    },
+    {
+      "id": "demo-mfpy6fbd-w78i",
+      "title": "GetTemplate by Id API Call",
+      "steps": [
+        {
+          "action": "highlight",
+          "position": "23:43",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "path": "TinyMceUmbraco16.Web/Controllers/AdvancedTemplatesController.cs"
+        }
+      ],
+      "description": "Rather than hardcoding we want to get this from the data folder and the content."
+    },
+    {
+      "id": "demo-mfpxq467-8mxn",
+      "title": "Add the templates promise",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceExtensions/advtemplates.request-factory.ts",
+          "position": "4:16",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ],
+      "description": "Rather than hardcoding we want to get this from the data folder and the content."
+    },
+    {
+      "id": "demo-mfpy8kzj-er6d",
+      "title": "Add the single template promise",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceExtensions/advtemplates.select-factory.ts",
+          "position": "4:11",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ]
+    },
+    {
+      "id": "demo-mfpy0wes-4aba",
+      "title": "Import the templates call into the extensions",
+      "steps": [
+        {
+          "action": "open",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts"
+        },
+        {
+          "action": "replace",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
+          "contentPath": ".demo/demo-global/extensions.tinymce-api.ts",
+          "position": "1:5000",
+          "highlightWholeLine": true
+        },
+        {
+          "action": "highlight",
+          "position": "7:8",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts"
+        }
+      ]
+    },
+    {
+      "id": "demo-mfpy471r-9khj",
+      "title": "We need to map the configuration to the property that TinyMCE expects",
+      "steps": [
+        {
+          "action": "highlight",
+          "position": "37:38",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts"
+        }
+      ]
+    }
+  ]
+}

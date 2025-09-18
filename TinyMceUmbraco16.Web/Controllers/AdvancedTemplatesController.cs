@@ -58,29 +58,23 @@ namespace TinyMceUmbraco16.Web.Controllers
                 .WhereNotNull()
                 .ToList();
 
-            // Adjust these aliases to your doctypes
-            const string dataFolderAlias = "dataFolder";
-            const string templateFolderAlias = "templatesFolder";
-            const string templateAlias = "emailTemplate";
-            const string templateContentProp = "template";
-
-            var dataFolder = rootNodes.FirstOrDefault(x => x.ContentType.Alias == dataFolderAlias);
+            var dataFolder = rootNodes.FirstOrDefault(x => x.ContentType.Alias == "dataFolder");
             if (dataFolder is null)
                 return Ok(Enumerable.Empty<object>());
 
             var categories = dataFolder.Children()
-                .Where(x => x.ContentType.Alias == templateFolderAlias)
+                .Where(x => x.ContentType.Alias == "templatesFolder")
                 .Select(category => new
                 {
                     id = category.Key.ToString(),
                     name = category.Name,
                     items = category.Children()
-                        .Where(x => x.ContentType.Alias == templateAlias)
+                        .Where(x => x.ContentType.Alias == "emailTemplate")
                         .Select(t => new
                         {
                             id = t.Key.ToString(),
                             name = t.Name,
-                            content = t.Value<string>(templateContentProp)
+                            content = t.Value<string>("template")
                         })
                 });
 
