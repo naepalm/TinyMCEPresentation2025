@@ -29,10 +29,14 @@ export default defineConfig({
     viteStaticCopy({
       targets: [
         {
-          // Copy all JSON, CSS, HTML, SVG, etc. files but ignore .ts
+          // Copy JSON, CSS, HTML, SVG, images recursively (ignore .ts files)
           src: "TinyMceExtensions/*.{json,css,html,svg,png,jpg}",
           dest: ".",
         },
+        {
+          src: 'TinyMceExtensions/files/**/*',
+          dest: 'files', // creates/keeps outDir/files/...
+        }
       ],
     }),
   ],

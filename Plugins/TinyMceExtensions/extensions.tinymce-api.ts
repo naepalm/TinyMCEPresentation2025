@@ -5,6 +5,8 @@ import type { UmbPropertyEditorConfigCollection } from '@umbraco-cms/backoffice/
 import { createMentionsRequest } from './mentions.request-factory';
 import { createMentionsSelect } from './mentions.select-factory';
 import { createAdvTemplatesRequest } from './advtemplates.request-factory';
+import { createAdvTemplatesSelect } from './advtemplates.select-factory';
+import { createMergeTagsRequest } from './mergetags.request-factory';
 
 export default class TinyMceMentionsExtensionApi extends UmbTinyMcePluginBase {
 	readonly #editor: Editor;
@@ -19,26 +21,32 @@ export default class TinyMceMentionsExtensionApi extends UmbTinyMcePluginBase {
 
 		if (this.#editor) {
 			// see all of the settings associated with the editor
-			console.log("mentions-plugin this.#editor", [this.#editor]);
+			console.log("tinymce-extensions this.#editor", [this.#editor]);
 		}
 		if (this.#configuration) {
 			// see all of the configuration settings
-			console.log("mentions-plugin this.#configuration", [this.#configuration]);
+			console.log("tinymce-extensions this.#configuration", [this.#configuration]);
 		}
 	}
 	
 	static override async extendEditorConfig(_config: any): Promise<void> {
 		// see the config before we plugin in the mentions
-		console.log("mentions-plugin initial config", [_config]);
+		console.log("tinymce-extensions initial config", [_config]);
 		_config.mentions_fetch = await createMentionsRequest(); // or a function that returns the request handler
         _config.mentions_menu_hover = await createMentionsSelect();
 		_config.advtemplate_list = await createAdvTemplatesRequest();
+		_config.advtemplate_get_template = await createAdvTemplatesSelect();
+
+		_config.mergetags_prefix = "[";
+		_config.mergetags_suffix = "]";
+		_config.mergetags_list = await createMergeTagsRequest();
+
 		// see the config after the mentions are fetched
-		console.log("mentions-plugin config with mentions", [_config]);
+		console.log("tinymce-extensions config with mentions", [_config]);
 	}
 
 	override async init(): Promise<void> {
 		// initialize the plugin
-		console.log("mentions-plugin init");
+		console.log("tinymce-extensions init");
 	}
 }

@@ -1,2 +1,2 @@
 		// initialize the plugin
-		console.log("mentions-plugin init");
+		console.log("tinymce-extensions init");

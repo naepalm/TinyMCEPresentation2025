@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Customer",
+    "menu": [
+      { "value": "Customer.FirstName", "title": "Customer First Name" },
+      { "value": "Customer.LastName", "title": "Customer Last Name" },
+      { "value": "Customer.Email", "title": "Customer Email" },
+      { "value": "Customer.Message", "title": "Customer Message" }
+    ]
+  },
+  {
+    "title": "Vendor",
+    "menu": [
+      { "value": "Vendor.Employee.Name", "title": "Vendor Contact Name" },
+      { "value": "Vendor.Employee.Position", "title": "Vendor Employee Position" },
+      { "value": "Vendor.Employee.Email", "title": "Vendor Employee Email" },
+      { "value": "Vendor.Employee.Extension", "title": "Vendor Employee Phone Extension" }
+    ]
+  },
+  {
+    "title": "Marketing",
+    "menu": [
+      { "value": "Marketing.Employee.Name", "title": "Marketing Contact Name" },
+      { "value": "Marketing.Employee.Position", "title": "Marketing Employee Position" },
+      { "value": "Marketing.Employee.Email", "title": "Marketing Employee Email" },
+      { "value": "Marketing.Employee.Extension", "title": "Marketing Employee Phone Extension" }
+    ]
+  },
+  {
+    "title": "Company",
+    "menu": [
+      { "value": "Company.Name", "title": "Company Name" },
+      { "value": "Company.Phone", "title": "Company Phone" },
+      { "value": "Company.Email", "title": "Company Email" },
+      { "value": "Company.Address", "title": "Company Address" }
+    ]
+  }
+]

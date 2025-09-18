@@ -8,21 +8,10 @@
 @if (Model.Children().Any())
 {
     <ul>
-        @foreach (var categoryFolder in Model.Children())
+        @foreach (var childPage in Model.Children())
         {
             <li>
-                <h2>@categoryFolder.Name</h2>
-                @if (categoryFolder.Children().Any())
-                {
-                    <ul>
-                        @foreach (var rteItem in categoryFolder.Children())
-                        {
-                            <li>
-                                <a href="@rteItem.Url()">@rteItem.Name</a>
-                            </li>
-                        }
-                    </ul>
-                }
+                <a href="@childPage.Url()">@childPage.Name</a>
             </li>
         }
     </ul>

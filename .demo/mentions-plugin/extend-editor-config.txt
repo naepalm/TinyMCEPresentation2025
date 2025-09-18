@@ -1,8 +1,8 @@
 	
 	static override async extendEditorConfig(_config: any): Promise<void> {
 		// see the config before we plugin in the mentions
-		console.log("mentions-plugin initial config", [_config]);
+		console.log("tinymce-extensions initial config", [_config]);
 		_config.mentions_fetch = await createMentionsRequest(); // or a function that returns the request handler
 		// see the config after the mentions are fetched
-		console.log("mentions-plugin config with mentions", [_config]);
+		console.log("tinymce-extensions config with mentions", [_config]);
 	}
