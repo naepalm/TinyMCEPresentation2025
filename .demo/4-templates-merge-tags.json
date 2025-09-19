@@ -100,7 +100,7 @@
     },
     {
       "id": "demo-mfpy0wes-4aba",
-      "title": "Import the templates call into the extensions",
+      "title": "Import the templates into the extensions",
       "steps": [
         {
           "action": "open",
@@ -124,7 +124,7 @@
     },
     {
       "id": "demo-mfpy471r-9khj",
-      "title": "We need to map the configuration to the property that TinyMCE expects",
+      "title": "Map the templates promise to the TinyMCE config",
       "steps": [
         {
           "action": "highlight",
@@ -134,6 +134,152 @@
           "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts"
         }
       ]
+    },
+    {
+      "title": "Add template to Generic Contact",
+      "steps": [
+        {
+          "action": "closeTerminal",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 5
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "cd TinyMceUmbraco16.Web",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet build",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet run",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 10000
+        },
+        {
+          "action": "openWebsite",
+          "url": "http://localhost:11070/umbraco/section/content/workspace/document/edit/99dd02ee-a62e-4e0e-b18e-fcdf2cdf52d7/invariant",
+          "openInVSCode": false
+        }
+      ],
+      "id": "demo-mfr01g3i-9pqp",
+      "description": "Rebuild, load Umbraco, and add the template to the contact page"
+    },
+    {
+      "id": "demo-mfr67b7n-ehf2",
+      "title": "Add the Merge Tags JSON",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceExtensions/files/mergetags.json",
+          "position": "1",
+          "highlightWholeLine": false,
+          "zoom": 4
+        }
+      ],
+      "description": "Merge tags are hardcoded so they can map to dictionary items"
+    },
+    {
+      "id": "demo-mfr6a3l6-v708",
+      "title": "Add the merge tags promise",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceExtensions/mergetags.request-factory.ts",
+          "position": "3:4",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ],
+      "description": "We need to load the JSON file and pass it into our config"
+    },
+    {
+      "id": "demo-mfr6gr91-7kll",
+      "title": "Import the merge tags into the extensions",
+      "steps": [
+        {
+          "action": "highlight",
+          "position": "9",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts"
+        }
+      ]
+    },
+    {
+      "id": "demo-mfr6i1yw-z6xy",
+      "title": "Set the merge tags in the TinyMCE config",
+      "steps": [
+        {
+          "action": "highlight",
+          "position": "40:42",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts"
+        }
+      ]
+    },
+    {
+      "title": "Add merge tags to Marketing Contact",
+      "steps": [
+        {
+          "action": "closeTerminal",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 5
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "cd TinyMceUmbraco16.Web",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet build",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet run",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 10000
+        },
+        {
+          "action": "openWebsite",
+          "url": "http://localhost:11070/umbraco/section/content/workspace/document/edit/0ee365e0-209b-4f74-82f9-1756766decfc/invariant",
+          "openInVSCode": false
+        }
+      ],
+      "id": "demo-mfr6o0sm-s3sp",
+      "description": "Rebuild, load Umbraco, and add the merge tags to the marketing contact page"
+    },
+    {
+      "id": "demo-mfr6tr02-6tro",
+      "title": "Replace form & dictionary fields in the workflow",
+      "steps": [
+        {
+          "action": "highlight",
+          "position": "46:82",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "path": "TinyMceUmbraco16.Web/Controllers/AdvancedTemplatesController.cs"
+        }
+      ],
+      "description": "Rather than hardcoding we want to get this from the data folder and the content."
     }
   ]
 }

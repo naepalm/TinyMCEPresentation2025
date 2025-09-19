@@ -1,0 +1,195 @@
+{
+  "$schema": "https://demotime.show/demo-time.schema.json",
+  "title": "5. Replace Merge Tags with Umbraco Fields",
+  "description": "Replace merge tags with form & dictionary fields in the cusotm form submission workflow",
+  "version": 2,
+  "demos": [
+    {
+      "id": "demo-mfr6tr02-6tro",
+      "title": "Show ReplaceTemplateTokensAsync method",
+      "steps": [
+        {
+          "action": "highlight",
+          "position": "125",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "path": "TinyMceUmbraco16.Web/Services/FormsService.cs"
+        }
+      ],
+      "description": "We pass in the template, WorkflowContext, and culture"
+    },
+    {
+      "id": "demo-mfr7ll97-e4sq",
+      "title": "Find the tokens using RegEx",
+      "steps": [
+        {
+          "action": "highlight",
+          "position": "132:133",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "path": "TinyMceUmbraco16.Web/Services/FormsService.cs"
+        }
+      ]
+    },
+    {
+      "id": "demo-mfr7n985-818s",
+      "title": "Loop through tags that start with Customer",
+      "steps": [
+        {
+          "action": "highlight",
+          "position": "140:149",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "path": "TinyMceUmbraco16.Web/Services/FormsService.cs"
+        }
+      ]
+    },
+    {
+      "id": "demo-mfr7o6h1-vdqy",
+      "title": "Call the custom form field method",
+      "steps": [
+        {
+          "action": "highlight",
+          "position": "143",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "path": "TinyMceUmbraco16.Web/Services/FormsService.cs"
+        }
+      ],
+      "description": "Getting a form field by the alias isn't as straightforward as it sounds"
+    },
+    {
+      "id": "demo-mfr7poc6-oowv",
+      "title": "Normalize the tag",
+      "steps": [
+        {
+          "action": "highlight",
+          "position": "172:175",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "path": "TinyMceUmbraco16.Web/Services/FormsService.cs"
+        }
+      ],
+      "description": "Normalize the tag by stripping out any non-conforming characters"
+    },
+    {
+      "id": "demo-mfr7r57p-unba",
+      "title": "Find the field by label or alias",
+      "steps": [
+        {
+          "action": "highlight",
+          "position": "178:180",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "path": "TinyMceUmbraco16.Web/Services/FormsService.cs"
+        }
+      ],
+      "description": "Normalize the alias by stripping out any non-conforming characters"
+    },
+    {
+      "id": "demo-mfr7thd2-bdsu",
+      "title": "Convert objects to strings and return them",
+      "steps": [
+        {
+          "action": "highlight",
+          "position": "189:190",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "path": "TinyMceUmbraco16.Web/Services/FormsService.cs"
+        }
+      ],
+      "description": "If the field isn't a string, convert the value to a string and return it"
+    },
+    {
+      "id": "demo-mfr7uk53-etz2",
+      "title": "Join all string values and return them",
+      "steps": [
+        {
+          "action": "highlight",
+          "position": "192:193",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "path": "TinyMceUmbraco16.Web/Services/FormsService.cs"
+        }
+      ],
+      "description": "If the field does store strings, get all the values and return them"
+    },
+    {
+      "id": "demo-mfr7vvrh-xppv",
+      "title": "Make the value web friendly, just in case",
+      "steps": [
+        {
+          "action": "highlight",
+          "position": "145:146",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "path": "TinyMceUmbraco16.Web/Services/FormsService.cs"
+        }
+      ]
+    },
+    {
+      "id": "demo-mfr7wno1-lofc",
+      "title": "Replace the dictionary values",
+      "steps": [
+        {
+          "action": "highlight",
+          "position": "152:157",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "path": "TinyMceUmbraco16.Web/Services/FormsService.cs"
+        }
+      ]
+    },
+    {
+      "id": "demo-mfr7xfhp-far1",
+      "title": "Finally, leave any it can't find as they are",
+      "steps": [
+        {
+          "action": "highlight",
+          "position": "160",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "path": "TinyMceUmbraco16.Web/Services/FormsService.cs"
+        }
+      ]
+    },
+    {
+      "title": "Load the form and submit it",
+      "steps": [
+        {
+          "action": "closeTerminal",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 5
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "cd TinyMceUmbraco16.Web",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet build",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet run",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 10000
+        },
+        {
+          "action": "openWebsite",
+          "url": "http://localhost:11070/marketing-contact/",
+          "openInVSCode": false
+        }
+      ],
+      "id": "demo-mf5x83ew-25q6"
+    }
+  ]
+}
