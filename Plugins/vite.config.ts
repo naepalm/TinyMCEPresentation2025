@@ -3,40 +3,57 @@ import { viteStaticCopy } from "vite-plugin-static-copy";
 import path from "path";
 import { fileURLToPath } from "url";
 
-// Recreate __dirname for ESM
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   build: {
-    lib: {
-      entry: path.resolve(__dirname, "TinyMceExtensions/extensions.tinymce-api.ts"),
-      name: "TinyMceExtensionsPlugin",
-      fileName: "tinymce-extensions-plugin",
-      formats: ["es"],
+    rollupOptions: {
+      input: {
+        tinymceExtensions: path.resolve(
+          __dirname,
+          "TinyMceExtensions/extensions.tinymce-api.ts"
+        ),
+        tinymceCloudCdn: path.resolve(
+          __dirname,
+          "TinyMceCloudCdn/manifests.js"
+        ),
+      },
+      external: [/^@umbraco-cms\//, /^@tiny-mce-umbraco\//],
+      output: {
+        entryFileNames: (chunk) => {
+          if (chunk.name === "tinymceExtensions") {
+            return "tinymce-extensions-plugin/tinymce-extensions-plugin.js";
+          }
+          if (chunk.name === "tinymceCloudCdn") {
+            return "tinymce-cloud-cdn/manifests.js";
+          }
+          return "[name].js";
+        },
+      },
     },
     outDir: path.resolve(
       __dirname,
-      "../TinyMceUmbraco16.Web/wwwroot/App_Plugins/tinymce-extensions-plugin"
+      "../TinyMceUmbraco16.Web/wwwroot/App_Plugins"
     ),
     emptyOutDir: false,
     sourcemap: true,
-    rollupOptions: {
-      external: [/^@umbraco-cms\//, /^@tiny-mce-umbraco\//],
-    },
   },
   plugins: [
     viteStaticCopy({
       targets: [
         {
-          // Copy JSON, CSS, HTML, SVG, images recursively (ignore .ts files)
           src: "TinyMceExtensions/*.{json,css,html,svg,png,jpg}",
-          dest: ".",
+          dest: "tinymce-extensions-plugin",
         },
         {
-          src: 'TinyMceExtensions/files/**/*',
-          dest: 'files', // creates/keeps outDir/files/...
-        }
+          src: "TinyMceExtensions/files/**/*",
+          dest: "tinymce-extensions-plugin/files",
+        },
+        {
+          src: "TinyMceCloudCdn/umbraco-package.json",
+          dest: "tinymce-cloud-cdn",
+        },
       ],
     }),
   ],

@@ -1,0 +1,14 @@
+{
+    "id": "TinyMCE.CloudCdn",
+    "name": "TinyMCE.CloudCdn",
+    "version": "8",
+    "extensions": [
+        {
+            "type": "bundle",
+            "alias": "tinyMceLibCloudCdn",
+            "name": "TinyMCE Cloud CDN Umbraco Configuration",
+            "overwrites": "TinyMCE.Lib",
+            "js": "/App_Plugins/tinymce-cloud-cdn/manifests.js"
+        }
+    ]
+}
