@@ -6,7 +6,7 @@
   "demos": [
     {
       "title": "Add TinyMceConfig",
-      "description": "Add the TinyMceConfig settings to AppSettings",
+      "description": "If you don't have it already you'll want to add the TinyMceConfig.",
       "steps": [
         {
           "action": "replace",
@@ -17,16 +17,9 @@
           "position": "1:5000"
         },
         {
-          "action": "insert",
-          "content": "  },\n  \"TinyMceConfig\": {\n   \n  }",
-          "position": "35",
-          "highlightWholeLine": true,
-          "path": "TinyMceUmbraco16.Web/appsettings.json"
-        },
-        {
           "action": "highlight",
           "path": "TinyMceUmbraco16.Web/appsettings.json",
-          "position": "36:38",
+          "position": "36:39",
           "content": ",\n      \"RichTextEditor\": {\n      }",
           "highlightWholeLine": true,
           "insertTypingMode": "instant",
@@ -40,23 +33,30 @@
       "steps": [
         {
           "action": "highlight",
-          "position": "37",
+          "position": "38",
           "highlightWholeLine": false,
           "path": "TinyMceUmbraco16.Web/appsettings.json",
           "zoom": 5
         },
         {
+          "action": "replace",
+          "path": "TinyMceUmbraco16.Web/appsettings.json",
+          "content": "    \"tinyMceVersion\": \"8\",",
+          "position": "37",
+          "highlightWholeLine": true
+        },
+        {
           "action": "insert",
           "content": "    \"customConfig\": {\n\n    }",
           "path": "TinyMceUmbraco16.Web/appsettings.json",
-          "position": "37",
+          "position": "38",
           "highlightWholeLine": true,
           "insertTypingMode": "line-by-line",
           "insertTypingSpeed": 100
         },
         {
           "action": "highlight",
-          "position": "37:39",
+          "position": "38:40",
           "highlightWholeLine": true,
           "path": "TinyMceUmbraco16.Web/appsettings.json",
           "zoom": 5
@@ -70,7 +70,7 @@
         {
           "action": "highlight",
           "path": "TinyMceUmbraco16.Web/appsettings.json",
-          "position": "38",
+          "position": "39",
           "highlightWholeLine": false,
           "zoom": 2
         },
@@ -80,14 +80,14 @@
           "path": "TinyMceUmbraco16.Web/appsettings.json",
           "zoom": 5,
           "contentPath": ".demo/formats-dropdown/style-formats.txt",
-          "position": "38",
+          "position": "39",
           "insertTypingSpeed": 100,
           "insertTypingMode": "line-by-line"
         },
         {
           "action": "highlight",
           "path": "TinyMceUmbraco16.Web/appsettings.json",
-          "position": "38:55",
+          "position": "39:55",
           "highlightWholeLine": true,
           "zoom": 2
         }

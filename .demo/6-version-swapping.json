@@ -1,0 +1,75 @@
+{
+  "$schema": "https://demotime.show/demo-time.schema.json",
+  "title": "6. Version Swapping",
+  "description": "As of the package's 16.2.0 release, you can now swap between versions 6, 7, and 8 of TinyMCE",
+  "version": 2,
+  "demos": [
+    {
+      "id": "demo-mfyglraq-o1hd",
+      "title": "Show the help plugin",
+      "steps": [
+        {
+          "action": "openWebsite",
+          "url": "http://localhost:11070/umbraco/section/content/workspace/document/edit/73b03bcf-3016-4543-8bab-269b78abe844/invariant",
+          "openInVSCode": false
+        }
+      ],
+      "description": "We can see the version inside the help plugin for TinyMCE"
+    },
+    {
+      "id": "demo-mfyi79q4-0lml",
+      "title": "Overwriting the TinyMCE.Lib",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceCloudCdn/umbraco-package.json",
+          "position": "10",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ]
+    },
+    {
+      "id": "demo-mfyi2vvi-m9l0",
+      "title": "Adding the version to the manifest file",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceCloudCdn/manifests.js",
+          "position": "5",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ],
+      "description": "We need a manifest file that gives us the right versions of TinyMCE"
+    },
+    {
+      "id": "demo-mfyi5ogp-7p3s",
+      "title": "Adding the icons to the manifests file",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceCloudCdn/manifests.js",
+          "position": "11",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ],
+      "description": "We need a manifest file that gives us the right versions of TinyMCE"
+    },
+    {
+      "id": "demo-mfyiakot-zjki",
+      "title": "Update the App Settings",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "TinyMceUmbraco16.Web/appsettings.json",
+          "zoom": 8,
+          "position": "37",
+          "highlightWholeLine": true
+        }
+      ],
+      "description": "We need to tell it what version of TinyMCE to use in our appSettings.json"
+    }
+  ]
+}

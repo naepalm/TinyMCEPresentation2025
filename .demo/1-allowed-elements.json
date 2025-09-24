@@ -24,7 +24,8 @@
           "action": "highlight",
           "path": "TinyMceUmbraco16.Web/appsettings.json",
           "position": "31:33",
-          "highlightWholeLine": true
+          "highlightWholeLine": true,
+          "zoom": 4
         }
       ]
     },
