@@ -41,7 +41,7 @@
         {
           "action": "replace",
           "path": "TinyMceUmbraco16.Web/appsettings.json",
-          "content": "    \"tinyMceVersion\": \"8\",",
+          "content": "    \"tinyMceVersion\": \"6\",",
           "position": "37",
           "highlightWholeLine": true
         },

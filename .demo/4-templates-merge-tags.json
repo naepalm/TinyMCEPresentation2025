@@ -148,12 +148,21 @@
         },
         {
           "action": "executeTerminalCommand",
-          "command": "cd TinyMceUmbraco16.Web",
-          "terminalId": "demo-build"
+          "terminalId": "demo-build",
+          "command": "cd Plugins"
         },
         {
           "action": "executeTerminalCommand",
-          "command": "dotnet build",
+          "command": "npm run build",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 5000
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "cd ../TinyMceUmbraco16.Web",
           "terminalId": "demo-build"
         },
         {
@@ -241,12 +250,21 @@
         },
         {
           "action": "executeTerminalCommand",
-          "command": "cd TinyMceUmbraco16.Web",
-          "terminalId": "demo-build"
+          "terminalId": "demo-build",
+          "command": "cd Plugins"
         },
         {
           "action": "executeTerminalCommand",
-          "command": "dotnet build",
+          "command": "npm run build",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 5000
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "cd ../TinyMceUmbraco16.Web",
           "terminalId": "demo-build"
         },
         {
@@ -266,20 +284,6 @@
       ],
       "id": "demo-mfr6o0sm-s3sp",
       "description": "Rebuild, load Umbraco, and add the merge tags to the marketing contact page"
-    },
-    {
-      "id": "demo-mfr6tr02-6tro",
-      "title": "Replace form & dictionary fields in the workflow",
-      "steps": [
-        {
-          "action": "highlight",
-          "position": "46:82",
-          "highlightWholeLine": true,
-          "zoom": 4,
-          "path": "TinyMceUmbraco16.Web/Controllers/AdvancedTemplatesController.cs"
-        }
-      ],
-      "description": "Rather than hardcoding we want to get this from the data folder and the content."
     }
   ]
 }

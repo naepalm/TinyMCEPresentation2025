@@ -30,9 +30,30 @@
       ]
     },
     {
+      "id": "demo-mg1cniq3-ch4d",
+      "title": "Show the manifests file with version 6",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceCloudCdn/manifests.js",
+          "position": "4:14",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ],
+      "description": "We need a manifest file that gives us the right versions of TinyMCE"
+    },
+    {
       "id": "demo-mfyi2vvi-m9l0",
       "title": "Adding the version to the manifest file",
       "steps": [
+        {
+          "action": "replace",
+          "path": "Plugins/TinyMceCloudCdn/manifests.js",
+          "content": "  script1.src = `https://cdn.tiny.cloud/1/${apiKey}/tinymce/8/tinymce.min.js`;",
+          "position": "5",
+          "highlightWholeLine": true
+        },
         {
           "action": "highlight",
           "path": "Plugins/TinyMceCloudCdn/manifests.js",
@@ -48,6 +69,13 @@
       "title": "Adding the icons to the manifests file",
       "steps": [
         {
+          "action": "replace",
+          "path": "Plugins/TinyMceCloudCdn/manifests.js",
+          "position": "11",
+          "highlightWholeLine": true,
+          "content": "  script2.src = `https://cdn.tiny.cloud/1/${apiKey}/tinymce/8/icons/default/icons.min.js`;"
+        },
+        {
           "action": "highlight",
           "path": "Plugins/TinyMceCloudCdn/manifests.js",
           "position": "11",
@@ -61,6 +89,13 @@
       "id": "demo-mfyiakot-zjki",
       "title": "Update the App Settings",
       "steps": [
+        {
+          "action": "replace",
+          "path": "TinyMceUmbraco16.Web/appsettings.json",
+          "content": "    \"tinyMceVersion\": \"8\",",
+          "position": "37",
+          "highlightWholeLine": true
+        },
         {
           "action": "highlight",
           "path": "TinyMceUmbraco16.Web/appsettings.json",

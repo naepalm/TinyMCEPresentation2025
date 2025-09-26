@@ -9,6 +9,13 @@
       "description": "Highlight the `RichTextEditor` section in appSettings.",
       "steps": [
         {
+          "action": "replace",
+          "path": "Plugins/TinyMceCloudCdn/manifests.js",
+          "contentPath": ".demo/version-swap/manifests.js",
+          "position": "1:5000",
+          "highlightWholeLine": true
+        },
+        {
           "action": "open",
           "path": "TinyMceUmbraco16.Web/appsettings.json"
         },
