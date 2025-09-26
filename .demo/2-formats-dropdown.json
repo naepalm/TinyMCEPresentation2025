@@ -105,7 +105,7 @@
         },
         {
           "action": "waitForTimeout",
-          "timeout": 5
+          "timeout": 10
         },
         {
           "action": "executeTerminalCommand",
@@ -121,6 +121,15 @@
           "action": "executeTerminalCommand",
           "terminalId": "demo-build",
           "command": "dotnet run"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 10000
+        },
+        {
+          "action": "openWebsite",
+          "url": "http://localhost:11070/umbraco/section/content/workspace/document/edit/73b03bcf-3016-4543-8bab-269b78abe844/invariant",
+          "openInVSCode": false
         }
       ],
       "id": "demo-mf5xkfvt-zvu2"

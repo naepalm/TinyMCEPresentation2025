@@ -22,7 +22,7 @@
         {
           "action": "highlight",
           "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
-          "position": "10:12",
+          "position": "1:4",
           "highlightWholeLine": true,
           "zoom": 4
         }
@@ -88,66 +88,6 @@
         }
       ],
       "description": "We add some logs into the initialize function just to see when and where we're calling it"
-    },
-    {
-      "id": "demo-mfeiakcv-ryxn",
-      "title": "Import the mention request factory",
-      "steps": [
-        {
-          "action": "highlight",
-          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
-          "highlightWholeLine": false,
-          "zoom": 4,
-          "position": "5"
-        },
-        {
-          "action": "replace",
-          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
-          "contentPath": ".demo/mentions-plugin/import-mention-request.txt",
-          "position": "5",
-          "highlightWholeLine": true,
-          "insertTypingMode": "line-by-line",
-          "insertTypingSpeed": 100
-        },
-        {
-          "action": "highlight",
-          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
-          "position": "5",
-          "highlightWholeLine": true,
-          "zoom": 4
-        }
-      ],
-      "description": "We do the actual underlying work in the mentions.request-factory.ts file, so we need to call it."
-    },
-    {
-      "id": "demo-mfeidb64-h12c",
-      "title": "Add the override for extendEditorConfig",
-      "steps": [
-        {
-          "action": "highlight",
-          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
-          "highlightWholeLine": false,
-          "zoom": 4,
-          "position": "27"
-        },
-        {
-          "action": "replace",
-          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
-          "contentPath": ".demo/mentions-plugin/extend-editor-config.txt",
-          "position": "27",
-          "highlightWholeLine": true,
-          "insertTypingMode": "line-by-line",
-          "insertTypingSpeed": 100
-        },
-        {
-          "action": "highlight",
-          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
-          "highlightWholeLine": true,
-          "zoom": 4,
-          "position": "31"
-        }
-      ],
-      "description": "We need to override extendEditorConfig to add our own configuration in for the mentions"
     },
     {
       "id": "demo-mfeimtfv-3l7k",
@@ -254,6 +194,66 @@
         }
       ],
       "description": "Limit the response to the first ten and send it back"
+    },
+    {
+      "id": "demo-mfeiakcv-ryxn",
+      "title": "Import the mention request factory",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
+          "highlightWholeLine": false,
+          "zoom": 4,
+          "position": "5"
+        },
+        {
+          "action": "replace",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
+          "contentPath": ".demo/mentions-plugin/import-mention-request.txt",
+          "position": "5",
+          "highlightWholeLine": true,
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 100
+        },
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
+          "position": "5",
+          "highlightWholeLine": true,
+          "zoom": 4
+        }
+      ],
+      "description": "We do the actual underlying work in the mentions.request-factory.ts file, so we need to call it."
+    },
+    {
+      "id": "demo-mfeidb64-h12c",
+      "title": "Add the override for extendEditorConfig",
+      "steps": [
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
+          "highlightWholeLine": false,
+          "zoom": 4,
+          "position": "27"
+        },
+        {
+          "action": "replace",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
+          "contentPath": ".demo/mentions-plugin/extend-editor-config.txt",
+          "position": "27",
+          "highlightWholeLine": true,
+          "insertTypingMode": "line-by-line",
+          "insertTypingSpeed": 100
+        },
+        {
+          "action": "highlight",
+          "path": "Plugins/TinyMceExtensions/extensions.tinymce-api.ts",
+          "highlightWholeLine": true,
+          "zoom": 4,
+          "position": "31"
+        }
+      ],
+      "description": "We need to override extendEditorConfig to add our own configuration in for the mentions"
     },
     {
       "id": "demo-mffofbet-p6a8",

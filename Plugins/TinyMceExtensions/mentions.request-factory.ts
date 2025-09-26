@@ -1,25 +1,34 @@
 export async function createMentionsRequest(): Promise<(request: any, respondWith: any) => void> {
 
-	return async (request: any, respondWith: any) => {
+	return (request: any, respondWith: any) => {
 
-        try {
-			// Call your custom Umbraco Members API, passing the search term
-			const response = await fetch(`/umbraco/api/members/getmembers?term=${encodeURIComponent(request.term)}`);
-			const members = await response.json();
+        // The initial hardcoded list of users where the user object must contain the properties `id` and `name`
+        // More information can be found at https://www.tiny.cloud/docs/tinymce/6/mentions
+        const users = [
+            {
+                id: "1",
+                name: 'John Smith'
+            },
+            {
+                id: "2",
+                name: 'Joe Cool'
+            },
+            {
+                id: "3",
+                name: 'Zander Geulph'
+            }
 
-			// Map the API response to TinyMCE's expected format
-			const users = members.map((m: any) => ({
-				id: m.id.toString(),
-				name: m.name,
-				description: m.description
-			}));
+        ];
 
-			// Return only first 10 results
-			respondWith(users);
-        } catch (error) {
-            console.error("Error fetching members:", error);
-            respondWith([]); // fallback to empty list
-        }
+        // request.term is the text the user typed after the '@' - the TinyMCE documentation it's 'query.term'
+        var filteredUsers = users.filter(user =>
+            user.name.toLowerCase().includes(request.term.toLowerCase())
+        );
 
+        // Only get the first ten users
+        filteredUsers = filteredUsers.slice(0, 10);
+
+        // Send the users back to the editor
+        respondWith(filteredUsers);
 	};
 }
