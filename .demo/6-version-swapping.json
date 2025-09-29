@@ -105,6 +105,54 @@
         }
       ],
       "description": "We need to tell it what version of TinyMCE to use in our appSettings.json"
+    },
+    {
+      "id": "demo-mg5l2au6-nl44",
+      "title": "Show the help plugin again",
+      "steps": [
+        {
+          "action": "closeTerminal",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 5
+        },
+        {
+          "action": "executeTerminalCommand",
+          "terminalId": "demo-build",
+          "command": "cd Plugins"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "npm run build",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 5000
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "cd ../TinyMceUmbraco16.Web",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "executeTerminalCommand",
+          "command": "dotnet run",
+          "terminalId": "demo-build"
+        },
+        {
+          "action": "waitForTimeout",
+          "timeout": 10000
+        },
+        {
+          "action": "openWebsite",
+          "url": "http://localhost:11070/umbraco/section/content/workspace/document/edit/73b03bcf-3016-4543-8bab-269b78abe844/invariant",
+          "openInVSCode": false
+        }
+      ],
+      "description": "We can see the version inside the help plugin for TinyMCE"
     }
   ]
 }
